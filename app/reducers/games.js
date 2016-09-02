@@ -7,6 +7,18 @@ const game = (state, action) => {
                 rating: action.rating,
                 gameType: action.gameType,
             };
+
+        case 'RATE_GAME':
+            const game = state.filter(game => {
+                if (game.id == action.id) {
+                    game.rating = action.rating;
+                    return game;
+                }
+            });
+            return {
+                id: action.id,
+                rating: action.rating
+            };
         default:
             return state;
     }
@@ -18,6 +30,11 @@ const games = (state = [], action) => {
             return [
                 ...state,
                 game(undefined, action)
+            ];
+        case 'RATE_GAME':
+            return [
+                ...state,
+                game(state, action)
             ];
         case 'REMOVE_GAME':
             const nState = state.filter(game => {

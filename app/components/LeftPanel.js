@@ -12,6 +12,7 @@ class LeftPanel extends Component {
         const group = this.props.group;
         const types = this.props.types;
         const ratings = this.props.ratings;
+
         return(
             <div className="left-panel">
                 <div className="row">

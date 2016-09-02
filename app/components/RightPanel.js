@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addGame, removeGame } from '../actions';
+import { addGame, removeGame, rateGame } from '../actions';
 import GamesList from './GamesList';
 
 const getGames = (games, props) => {
@@ -33,6 +33,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     onRemoveGame(id) {
         dispatch(removeGame(id));
+    },
+    onRateGame(id, rating) {
+        dispatch(rateGame(id, rating));
     }
 });
 

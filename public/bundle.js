@@ -22377,6 +22377,18 @@
 	                rating: action.rating,
 	                gameType: action.gameType
 	            };
+
+	        case 'RATE_GAME':
+	            var _game = state.filter(function (game) {
+	                if (game.id == action.id) {
+	                    game.rating = action.rating;
+	                    return game;
+	                }
+	            });
+	            return {
+	                id: action.id,
+	                rating: action.rating
+	            };
 	        default:
 	            return state;
 	    }
@@ -22389,6 +22401,8 @@
 	    switch (action.type) {
 	        case 'ADD_GAME':
 	            return [].concat(_toConsumableArray(state), [game(undefined, action)]);
+	        case 'RATE_GAME':
+	            return [].concat(_toConsumableArray(state), [game(state, action)]);
 	        case 'REMOVE_GAME':
 	            var nState = state.filter(function (game) {
 	                return game.id != action.id;
@@ -46185,6 +46199,7 @@
 	            var group = this.props.group;
 	            var types = this.props.types;
 	            var ratings = this.props.ratings;
+
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'left-panel' },
@@ -46393,6 +46408,9 @@
 	        },
 	        onRemoveGame: function onRemoveGame(id) {
 	            dispatch((0, _actions.removeGame)(id));
+	        },
+	        onRateGame: function onRateGame(id, rating) {
+	            dispatch((0, _actions.rateGame)(id, rating));
 	        }
 	    };
 	};
@@ -46410,7 +46428,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.removeGame = exports.addGame = undefined;
+	exports.rateGame = exports.removeGame = exports.addGame = undefined;
 
 	var _nodeUuid = __webpack_require__(273);
 
@@ -46428,6 +46446,14 @@
 	    return {
 	        type: 'REMOVE_GAME',
 	        id: id
+	    };
+	};
+
+	var rateGame = exports.rateGame = function rateGame(id, rating) {
+	    return {
+	        type: 'RATE_GAME',
+	        id: id,
+	        rating: rating
 	    };
 	};
 
@@ -50746,6 +50772,7 @@
 
 	        _this.onAddGame = _this.props.onAddGame.bind(_this);
 	        _this.onRemoveGame = _this.props.onRemoveGame.bind(_this);
+	        _this.onRateGame = _this.props.onRateGame.bind(_this);
 	        return _this;
 	    }
 
@@ -50791,7 +50818,75 @@
 	                            _react2.default.createElement(
 	                                "span",
 	                                { className: "rating" },
-	                                game.rating
+	                                _react2.default.createElement(
+	                                    "ul",
+	                                    { className: "rate" },
+	                                    _react2.default.createElement(
+	                                        "li",
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            "a",
+	                                            { href: "#", onClick: function onClick(e) {
+	                                                    e.preventDefault();
+	                                                    _this2.onRateGame(game.id, 1);
+	                                                },
+	                                                className: game.rating > 0 ? 'active' : null },
+	                                            " "
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        "li",
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            "a",
+	                                            { href: "#", onClick: function onClick(e) {
+	                                                    e.preventDefault();
+	                                                    _this2.onRateGame(game.id, 2);
+	                                                },
+	                                                className: game.rating > 1 ? 'active' : null },
+	                                            " "
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        "li",
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            "a",
+	                                            { href: "#", onClick: function onClick(e) {
+	                                                    e.preventDefault();
+	                                                    _this2.onRateGame(game.id, 3);
+	                                                },
+	                                                className: game.rating > 2 ? 'active' : null },
+	                                            " "
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        "li",
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            "a",
+	                                            { href: "#", onClick: function onClick(e) {
+	                                                    e.preventDefault();
+	                                                    _this2.onRateGame(game.id, 4);
+	                                                },
+	                                                className: game.rating > 3 ? 'active' : null },
+	                                            " "
+	                                        )
+	                                    ),
+	                                    _react2.default.createElement(
+	                                        "li",
+	                                        null,
+	                                        _react2.default.createElement(
+	                                            "a",
+	                                            { href: "#", onClick: function onClick(e) {
+	                                                    e.preventDefault();
+	                                                    _this2.onRateGame(game.id, 5);
+	                                                },
+	                                                className: game.rating > 4 ? 'active' : null },
+	                                            " "
+	                                        )
+	                                    )
+	                                )
 	                            ),
 	                            _react2.default.createElement(
 	                                "span",
@@ -50867,7 +50962,8 @@
 	        gameType: _react.PropTypes.string.isRequired
 	    }).isRequired).isRequired,
 	    onAddGame: _react.PropTypes.func.isRequired,
-	    onRemoveGame: _react.PropTypes.func.isRequired
+	    onRemoveGame: _react.PropTypes.func.isRequired,
+	    onRateGame: _react.PropTypes.func.isRequired
 	};
 
 	exports.default = GamesList;

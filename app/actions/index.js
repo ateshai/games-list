@@ -12,3 +12,9 @@ export const removeGame = (id) => ({
     type:'REMOVE_GAME',
     id
 });
+
+export const rateGame = (id, rating) => ({
+    type:'RATE_GAME',
+    id,
+    rating
+});
