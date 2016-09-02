@@ -1,0 +1,233 @@
+// Core variables and mixins
+@import "bootstrap/_variables";
+@import "bootstrap/_mixins";
+
+// Reset and dependencies
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+
+// Core CSS
+@import "bootstrap/scaffolding";
+@import "bootstrap/type";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/responsive-utilities";
+
+
+html,body, .wrapper {height:100%;}
+
+ul {
+  padding:0;
+  margin:0;
+  li {list-style: none;}
+}
+body {
+  margin:0;
+  padding:0;
+  background: #f5f5f5;
+
+
+  .left-panel {
+    @extend .col-md-3;
+    @extend .col-sm-4;
+    height:100%;
+    .row {
+      height: 100%;
+    }
+    .menu {
+      width:100%;
+      display: block;
+      height:100%;
+      box-shadow:2px 0 2px 0 rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      position: relative;
+
+      .menu-item {
+        max-height: 44px;
+        overflow: hidden;
+        transition: all .4s cubic-bezier(.17,.67,.83,.67);
+
+        a {
+          width:100%;
+          padding:10px 5px;
+          display: block;
+          background:#eceaea;
+          margin-bottom:5px;
+          color:#000;
+          text-decoration: none;
+          text-transform: capitalize;
+        }
+
+        &.active {
+          max-height: 700px;
+          a {
+            background: orange;
+          }
+        }
+        &:last-child {
+          position: absolute;
+          bottom:0;
+          left: 0;
+          width: 100%;
+          display: block;
+          box-shadow:0 -1px 2px 0 rgba(0, 0, 0, 0.1);
+          a {
+            background: #fff;
+            text-align: center;
+          }
+        }
+      }
+
+      .sub-menu {
+        margin:0 0 5px 0;
+        display: block;
+        .sub-menu-item {
+          border-bottom:solid 1px #ccc;
+          a {
+            background:#fff;
+            margin:0;
+          }
+        }
+      }
+    }
+  }
+
+  .right-panel {
+    @extend .col-md-9;
+    @extend .col-sm-8;
+    height:100%;
+
+  }
+  .games-list {
+    @extend .col-md-9;
+    @extend .col-sm-8;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+
+    .sort {
+      width:100%;
+      display: block;
+      background:#fff;
+      padding:5px 10px;
+      text-align: right;
+      box-shadow:0 0 1px 0 rgba(0, 0, 0, 0.75);
+      margin-bottom:10px;
+    }
+    .games {
+      width:100%;
+      padding-bottom:60px;
+      .game {
+        width:100%;
+        padding:5px;
+        border-radius: 5px;
+        box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.4);
+        margin-bottom:10px;
+        figure {
+          width:40px;
+          height:40px;
+          display: inline-block;
+          background: #ccc;
+          margin-right:10px;
+          vertical-align: middle;
+        }
+        span {
+          display: inline-block;
+          vertical-align: middle;
+          text-transform: capitalize;
+          &.name {
+            width:calc(60% - 70px);
+          }
+          &.rating {
+            width:40%;
+          }
+          &.remove-game {
+            width:20px;
+            height:20px;
+            background: #ccc;
+            text-align: center;
+            line-height: 20px;
+            border-radius:10px;
+            font-weight: 600;
+            font-size:13px;
+            color:#fff;
+            cursor:pointer;
+            text-transform: none;
+          }
+        }
+
+        &:hover {
+          background:rgba(187,249,162,0.3);
+        }
+      }
+    }
+
+    .add-game {
+      @extend .col-md-9;
+      @extend .col-sm-8;
+      position: fixed;
+      bottom:0;
+      right:0;
+
+      form {
+        position: relative;
+        width:100%;
+        display: block;
+        float:left;
+        background: #fff;
+        padding: 10px;
+        box-shadow:0 -1px 2px 0 rgba(0, 0, 0, 0.1);
+        border-radius:5px;
+        .npt {
+          @extend .col-sm-4;
+          display: inline-block;
+          label {
+            width:70px;
+            display: inline-block;
+          }
+          input[type=text] {
+            width:calc(100% - 75px);
+            display: inline-block;
+            padding: 5px;
+            border:none;
+            background: #ececec;
+            box-shadow:inset 0 0px 3px 0 rgba(0, 0, 0, 0.2);
+            border-radius:2px;
+            outline: none;
+            transition: all .4s cubic-bezier(.17,.67,.83,.67);
+            &:focus,
+            &:hover {
+              background: darken(#ececec, 10);
+              border-color:darken(#ececec, 30);
+              box-shadow:inset 0 0px 3px 0 rgba(0, 0, 0, 0.3);
+            }
+          }
+          button {
+            width:100%;
+            display: block;
+            padding: 5px;
+            background: #44e644;
+            border:solid 1px darken(#44e644, 20);
+            color:#fff;
+            border-radius:2px;
+            transition: all .4s cubic-bezier(.17,.67,.83,.67);
+            &:hover {
+              background: darken(#44e644, 20);
+              border-color:darken(#44e644, 30);
+            }
+          }
+        }
+      }
+
+    }
+  }
+
+}
+
+#root {
+  width:100%;
+  height:100%;
+  display: block;
+}
+
+
