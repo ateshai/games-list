@@ -22366,6 +22366,8 @@
 	    value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	var game = function game(state, action) {
@@ -22379,16 +22381,13 @@
 	            };
 
 	        case 'RATE_GAME':
-	            var _game = state.filter(function (game) {
-	                if (game.id == action.id) {
-	                    game.rating = action.rating;
-	                    return game;
-	                }
-	            });
-	            return {
-	                id: action.id,
+	            if (state.id !== action.id) {
+	                return state;
+	            }
+
+	            return _extends({}, state, {
 	                rating: action.rating
-	            };
+	            });
 	        default:
 	            return state;
 	    }
@@ -22402,7 +22401,9 @@
 	        case 'ADD_GAME':
 	            return [].concat(_toConsumableArray(state), [game(undefined, action)]);
 	        case 'RATE_GAME':
-	            return [].concat(_toConsumableArray(state), [game(state, action)]);
+	            return state.map(function (t) {
+	                return game(t, action);
+	            });
 	        case 'REMOVE_GAME':
 	            var nState = state.filter(function (game) {
 	                return game.id != action.id;

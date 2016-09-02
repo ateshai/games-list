@@ -9,14 +9,12 @@ const game = (state, action) => {
             };
 
         case 'RATE_GAME':
-            const game = state.filter(game => {
-                if (game.id == action.id) {
-                    game.rating = action.rating;
-                    return game;
-                }
-            });
+            if (state.id !== action.id) {
+                return state;
+            }
+
             return {
-                id: action.id,
+                ...state,
                 rating: action.rating
             };
         default:
@@ -32,10 +30,9 @@ const games = (state = [], action) => {
                 game(undefined, action)
             ];
         case 'RATE_GAME':
-            return [
-                ...state,
-                game(state, action)
-            ];
+            return state.map(t =>
+                game(t, action)
+            );
         case 'REMOVE_GAME':
             const nState = state.filter(game => {
                 return game.id != action.id;
