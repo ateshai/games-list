@@ -4,7 +4,8 @@
   "description": "Store like games list",
   "main": "app/index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./app/tests/*.specs.js "
+    "test": "mocha --compilers js:babel-core/register ./app/tests/*.specs.js ",
+    "coverage": "nyc npm t"
   },
   "author": "Aykut Ateş <ateshai@gmail.com>",
   "license": "ISC",
@@ -37,6 +38,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "mocha": "^2.5.3",
     "node-sass": "^3.8.0",
+    "nyc": "^8.1.0",
     "react-addons-test-utils": "^15.3.1",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
