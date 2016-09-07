@@ -18,3 +18,9 @@ export const rateGame = (id, rating) => ({
     id,
     rating
 });
+
+export const sortGames = (filter, asc) => ({
+    type:'SORT_GAMES',
+    filter,
+    asc
+});

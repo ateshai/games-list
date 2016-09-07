@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => ({
     games: getGames(
         state.games,
         ownProps
-    ),
+    )
 });
 
 const mapDispatchToProps = (dispatch) => ({

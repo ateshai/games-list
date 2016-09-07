@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
+import SortList from './SortList';
 
 class GamesList extends Component {
     constructor(props) {
@@ -14,9 +14,7 @@ class GamesList extends Component {
         let typeInput, titleInput;
         return (
             <div className="games-list">
-                <div className="sort"><span>Sort by: <a href="#" onClick={e => {
-                    e.preventDefault();
-                }}>Increase</a></span></div>
+                <SortList filter={this.props.filter} />
                 <ul className="games">
                     {this.props.games.map((game, index) =>
                         <li className="game" key={index}>
