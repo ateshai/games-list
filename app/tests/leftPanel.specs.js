@@ -21,7 +21,7 @@ describe('LeftPanel', () => {
     it('should contain 3 menu item', () => {
         const leftpanel = shallow(<LeftPanel {...props} store={store} />);
         console.log(leftpanel.debug());
-        expect(leftpanel.find(".row").length).to.equal(1);
+        expect(leftpanel.find("li").length).to.equal(1);
     });
 
 });
