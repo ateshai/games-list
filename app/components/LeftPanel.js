@@ -6,8 +6,8 @@ import {Link} from 'react-router'
 class LeftPanel extends Component {
     constructor(props) {
         super(props);
-
     }
+
     render() {
         const group = this.props.group;
         const types = this.props.types;
@@ -122,7 +122,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch) => ({
     onSort(id) {
         dispatch(toggleTodo(id));
-    },
+    }
 });
 
 

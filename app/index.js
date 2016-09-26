@@ -6,7 +6,6 @@ import './styles/style.scss';
 
 
 const store = configureStore();
-
 render(
    <Root store={store} />,
     document.getElementById('root')
