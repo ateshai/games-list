@@ -2,12 +2,9 @@ import React from 'react';
 import {expect} from 'chai';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import SortList from '../components/SortList';
-import configureStore from '../configureStore';
-
+import {SortListComponent} from '../components/SortList';
 
 describe('SortList', () => {
-    const store = configureStore();
 
     const props = {
         filter: "all",
@@ -18,23 +15,23 @@ describe('SortList', () => {
     };
 
     it('should render sort list component', () => {
-        const wrapper = shallow(<SortList {...props} store={store} />);
+        const wrapper = shallow(<SortListComponent {...props} />);
         expect(wrapper.length).to.equal(1);
     });
 
-    xit('should call sorting function when clicked', () => {
+    it('should call sorting function when clicked', () => {
         const onSortGames = sinon.spy();
-        const wrapper = shallow(<SortList {...props} onSortGames={onSortGames} store={store} />);
-        console.log(wrapper.debug());
+        const wrapper = shallow(<SortListComponent {...props} onSortGames={ onSortGames } />);
         wrapper.find('a').simulate('click');
         expect(onSortGames.calledOnce).to.equal(true);
     });
 
 
-    xit('should has class "sort"', () => {
-        const wrapper = shallow(<SortList {...props} store={store} />);
-        //console.log(wrapper.find('span'));
-        expect(wrapper.find('span')).to.have.length(1);
+    it('innerText must change on sort', () => {
+        const wrapper = shallow(<SortListComponent {...props} />);
+        expect(wrapper.find('span').text()).to.equal('Sort by:Increase');
+        wrapper.find('a').simulate('click');
+        expect(wrapper.find('span').text()).to.equal('Sort by:Decrease');
     });
 });
 
