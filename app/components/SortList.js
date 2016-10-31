@@ -31,9 +31,9 @@ export class SortListComponent extends Component {
     }
 }
 
-SortListComponent.propTypes = {
-    onSortGames: PropTypes.func.isRequired
-};
+// SortListComponent.propTypes = {
+//     onSortGames: PropTypes.func.isRequired
+// };
 const mapStateToProps = (state) => ({
     games: state.games
 });

@@ -3,6 +3,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: "./app/index.js",
     output: {
+        publicPath: "public/",
         filename: "public/bundle.js"
     },
     module: {

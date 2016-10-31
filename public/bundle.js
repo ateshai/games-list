@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "public/";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -60,7 +60,7 @@
 
 	var _Root2 = _interopRequireDefault(_Root);
 
-	__webpack_require__(293);
+	__webpack_require__(294);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -46345,6 +46345,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.LeftPanelComponent = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -46364,16 +46365,16 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var LeftPanel = function (_Component) {
-	    _inherits(LeftPanel, _Component);
+	var LeftPanelComponent = exports.LeftPanelComponent = function (_Component) {
+	    _inherits(LeftPanelComponent, _Component);
 
-	    function LeftPanel(props) {
-	        _classCallCheck(this, LeftPanel);
+	    function LeftPanelComponent(props) {
+	        _classCallCheck(this, LeftPanelComponent);
 
-	        return _possibleConstructorReturn(this, (LeftPanel.__proto__ || Object.getPrototypeOf(LeftPanel)).call(this, props));
+	        return _possibleConstructorReturn(this, (LeftPanelComponent.__proto__ || Object.getPrototypeOf(LeftPanelComponent)).call(this, props));
 	    }
 
-	    _createClass(LeftPanel, [{
+	    _createClass(LeftPanelComponent, [{
 	        key: 'render',
 	        value: function render() {
 	            var group = this.props.group;
@@ -46481,7 +46482,7 @@
 	        }
 	    }]);
 
-	    return LeftPanel;
+	    return LeftPanelComponent;
 	}(_react.Component);
 
 	var countItems = function countItems(arr, what) {
@@ -46535,7 +46536,9 @@
 	    };
 	};
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LeftPanel);
+	var LeftPanel = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(LeftPanelComponent);
+
+	exports.default = LeftPanel;
 
 /***/ },
 /* 266 */
@@ -50951,6 +50954,10 @@
 
 	var _SortList2 = _interopRequireDefault(_SortList);
 
+	var _AddGame = __webpack_require__(293);
+
+	var _AddGame2 = _interopRequireDefault(_AddGame);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50967,7 +50974,6 @@
 
 	        var _this = _possibleConstructorReturn(this, (GamesList.__proto__ || Object.getPrototypeOf(GamesList)).call(this, props));
 
-	        _this.onAddGame = _this.props.onAddGame.bind(_this);
 	        _this.onRemoveGame = _this.props.onRemoveGame.bind(_this);
 	        _this.onRateGame = _this.props.onRateGame.bind(_this);
 	        return _this;
@@ -50978,8 +50984,6 @@
 	        value: function render() {
 	            var _this2 = this;
 
-	            var typeInput = void 0,
-	                titleInput = void 0;
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'games-list' },
@@ -51081,54 +51085,7 @@
 	                        );
 	                    })
 	                ),
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'add-game' },
-	                    _react2.default.createElement(
-	                        'form',
-	                        { onSubmit: function onSubmit(e) {
-	                                e.preventDefault();
-	                                if (!titleInput.value.trim() || !typeInput.value.trim()) {
-	                                    return;
-	                                }
-	                                _this2.onAddGame(titleInput.value, typeInput.value);
-	                                titleInput.value = typeInput.value = '';
-	                            } },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'npt' },
-	                            _react2.default.createElement(
-	                                'label',
-	                                { htmlFor: 'name' },
-	                                'Title:'
-	                            ),
-	                            _react2.default.createElement('input', { id: 'name', type: 'text', ref: function ref(node) {
-	                                    titleInput = node;
-	                                } })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'npt' },
-	                            _react2.default.createElement(
-	                                'label',
-	                                { htmlFor: 'type' },
-	                                'Type:'
-	                            ),
-	                            _react2.default.createElement('input', { id: 'type', type: 'text', ref: function ref(node) {
-	                                    typeInput = node;
-	                                } })
-	                        ),
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'npt' },
-	                            _react2.default.createElement(
-	                                'button',
-	                                { type: 'submit' },
-	                                'Create'
-	                            )
-	                        )
-	                    )
-	                )
+	                _react2.default.createElement(_AddGame2.default, null)
 	            );
 	        }
 	    }]);
@@ -51143,7 +51100,6 @@
 	        name: _react.PropTypes.string.isRequired,
 	        gameType: _react.PropTypes.string.isRequired
 	    }).isRequired).isRequired,
-	    onAddGame: _react.PropTypes.func.isRequired,
 	    onRemoveGame: _react.PropTypes.func.isRequired,
 	    onRateGame: _react.PropTypes.func.isRequired
 	};
@@ -51159,6 +51115,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.SortListComponent = undefined;
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -51178,17 +51135,19 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var SortList = function (_Component) {
-	    _inherits(SortList, _Component);
+	var SortListComponent = exports.SortListComponent = function (_Component) {
+	    _inherits(SortListComponent, _Component);
 
-	    function SortList(props) {
-	        _classCallCheck(this, SortList);
+	    function SortListComponent(props) {
+	        _classCallCheck(this, SortListComponent);
 
-	        return _possibleConstructorReturn(this, (SortList.__proto__ || Object.getPrototypeOf(SortList)).call(this, props));
-	        // this.onSortGames = this.props.onSortGames.bind(this);
+	        var _this = _possibleConstructorReturn(this, (SortListComponent.__proto__ || Object.getPrototypeOf(SortListComponent)).call(this, props));
+
+	        _this.onSortGames = _this.props.onSortGames.bind(_this);
+	        return _this;
 	    }
 
-	    _createClass(SortList, [{
+	    _createClass(SortListComponent, [{
 	        key: 'componentWillMount',
 	        value: function componentWillMount() {
 	            this.setState({
@@ -51210,7 +51169,7 @@
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: '#', onClick: function onClick(e) {
-	                                e.preventDefault();
+	                                if (e) e.preventDefault();
 	                                _this2.props.onSortGames(_this2.props.filter, _this2.state.sortByIncrease);
 	                                _this2.setState({
 	                                    sortByIncrease: !_this2.state.sortByIncrease
@@ -51223,31 +51182,149 @@
 	        }
 	    }]);
 
-	    return SortList;
+	    return SortListComponent;
 	}(_react.Component);
+
+	// SortListComponent.propTypes = {
+	//     onSortGames: PropTypes.func.isRequired
+	// };
+
+
+	var mapStateToProps = function mapStateToProps(state) {
+	    return {
+	        games: state.games
+	    };
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        onSortGames: function onSortGames(filter, asc) {
+	            dispatch((0, _actions.sortGames)(filter, asc));
+	        }
+	    };
+	};
+
+	var SortList = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SortListComponent);
 
 	exports.default = SortList;
 
-	// SortList.propTypes = {
-	//     onSortGames: PropTypes.func.isRequired
-	// };
-	//
-	// const mapStateToProps = (state) => ({
-	//     games: state.games
-	// });
-	// const mapDispatchToProps = (dispatch) => ({
-	//     onSortGames(filter, asc) {
-	//         dispatch(sortGames(filter, asc));
-	//     }
-	// });
-	//
-	// export default connect(
-	//     mapStateToProps,
-	//     mapDispatchToProps
-	// )(SortList);
-
 /***/ },
 /* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(194);
+
+	var _actions = __webpack_require__(267);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var AddGameComponent = function (_Component) {
+	    _inherits(AddGameComponent, _Component);
+
+	    function AddGameComponent(props) {
+	        _classCallCheck(this, AddGameComponent);
+
+	        var _this = _possibleConstructorReturn(this, (AddGameComponent.__proto__ || Object.getPrototypeOf(AddGameComponent)).call(this, props));
+
+	        _this.onAddGame = _this.props.onAddGame.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(AddGameComponent, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this2 = this;
+
+	            var titleInput = void 0,
+	                typeInput = void 0;
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'add-game' },
+	                _react2.default.createElement(
+	                    'form',
+	                    { onSubmit: function onSubmit(e) {
+	                            e.preventDefault();
+	                            if (!titleInput.value.trim() || !typeInput.value.trim()) {
+	                                return;
+	                            }
+	                            _this2.onAddGame(titleInput.value, typeInput.value);
+	                            titleInput.value = typeInput.value = '';
+	                        } },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'npt' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { htmlFor: 'name' },
+	                            'Title:'
+	                        ),
+	                        _react2.default.createElement('input', { id: 'name', type: 'text', ref: function ref(node) {
+	                                titleInput = node;
+	                            } })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'npt' },
+	                        _react2.default.createElement(
+	                            'label',
+	                            { htmlFor: 'type' },
+	                            'Type:'
+	                        ),
+	                        _react2.default.createElement('input', { id: 'type', type: 'text', ref: function ref(node) {
+	                                typeInput = node;
+	                            } })
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'npt' },
+	                        _react2.default.createElement(
+	                            'button',
+	                            { type: 'submit' },
+	                            'Create'
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return AddGameComponent;
+	}(_react.Component);
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        onAddGame: function onAddGame(title, gameType) {
+	            dispatch((0, _actions.addGame)(title, gameType));
+	        }
+	    };
+	};
+
+	var AddGame = (0, _reactRedux.connect)(function () {
+	    return {};
+	}, // returns empty object
+	mapDispatchToProps)(AddGameComponent);
+
+	exports.default = AddGame;
+
+/***/ },
+/* 294 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

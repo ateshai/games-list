@@ -1,16 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import SortList from './SortList';
+import AddGame from './AddGame';
+
 class GamesList extends Component {
     constructor(props) {
         super(props);
 
-        this.onAddGame = this.props.onAddGame.bind(this);
         this.onRemoveGame = this.props.onRemoveGame.bind(this);
         this.onRateGame = this.props.onRateGame.bind(this);
     }
 
     render(){
-        let typeInput, titleInput;
         return (
             <div className="games-list">
                 <SortList filter={this.props.filter} />
@@ -66,29 +66,7 @@ class GamesList extends Component {
                     )}
                 </ul>
 
-                <div className="add-game">
-                    <form onSubmit={e => {
-                            e.preventDefault();
-                            if (!titleInput.value.trim() || !typeInput.value.trim() ) {
-                                return;
-                            }
-                            this.onAddGame(titleInput.value, typeInput.value);
-                            titleInput.value = typeInput.value = '';
-                        }
-                    }>
-                        <div className="npt">
-                            <label htmlFor="name">Title:</label>
-                            <input id="name" type="text" ref={node => {titleInput = node; }} />
-                        </div>
-                        <div className="npt">
-                            <label htmlFor="type">Type:</label>
-                            <input id="type" type="text" ref={node => {typeInput = node; }} />
-                        </div>
-                        <div className="npt">
-                            <button type="submit">Create</button>
-                        </div>
-                    </form>
-                </div>
+                <AddGame />
             </div>
         )
     }
@@ -101,7 +79,6 @@ GamesList.propTypes = {
         name: PropTypes.string.isRequired,
         gameType: PropTypes.string.isRequired,
     }).isRequired).isRequired,
-    onAddGame: PropTypes.func.isRequired,
     onRemoveGame: PropTypes.func.isRequired,
     onRateGame: PropTypes.func.isRequired
 };
