@@ -1,1 +1,2 @@
-Demo: http://test.finnuri.com
+## GAMES LIST
+Simple React Redux example.
